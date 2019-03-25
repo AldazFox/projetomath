@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: b673fdd2a52097f4895859e364db9143
+timeCreated: 1552141536
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: DS-Digital
+  fontNames:
+  - DS-Digital
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 5d008f83d35e9f542bcd6809d43fad30, type: 3}
+  - {fileID: 12800000, guid: 7e5054a6234649d45a4611514f252114, type: 3}
+  - {fileID: 12800000, guid: 4e896dc7f9bed474da11289dd7c2df39, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
