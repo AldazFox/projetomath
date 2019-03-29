@@ -10,7 +10,7 @@ public class Nave : MonoBehaviour
     bool direcaoDireita = true;
     public GameObject plasma;
     int municao;
-    
+
 
 
     // Use this for initialization
@@ -25,24 +25,25 @@ public class Nave : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             moverDireita();
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             moverEsquerda();
         }
-        if (Input.GetKey(KeyCode.W))
-        {
-            moverCima();
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            moverBaixo();
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
+        //if (Input.GetKey(KeyCode.W))
+        //{
+        //    moverCima();
+        //}
+        //if (Input.GetKey(KeyCode.S))
+        //{
+        //    moverBaixo();
+        //}
+        //if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             disparar();
         }
@@ -82,10 +83,16 @@ public class Nave : MonoBehaviour
 
     void disparar()
     {
-        if (municao > 0)
+        //if (municao > 0)
+        //{
+        //    GameObject plasmaGO = Instantiate(plasma, transform.position, transform.rotation);
+        //    municao--;
+        //}
+        bool respostaCerta =false;
+        respostaCerta = GameObject.FindGameObjectWithTag("Desafio").GetComponent<Desafio>().compararResposta();
+        if (respostaCerta)
         {
             GameObject plasmaGO = Instantiate(plasma, transform.position, transform.rotation);
-            municao--;
         }
     }
     public void Recaregar()

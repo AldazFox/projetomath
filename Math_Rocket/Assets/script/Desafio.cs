@@ -29,10 +29,10 @@ public class Desafio : MonoBehaviour
     {
         pegarNumeros();
 
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            compararResposta();
-        }
+        //if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        //{
+        //    compararResposta();
+        //}
     }
 
     void pegarDesafio()
@@ -88,19 +88,21 @@ public class Desafio : MonoBehaviour
         respostaTexto.text = resp;
     }
 
-    public void compararResposta()
+    public bool compararResposta()
     {
         if (respostas[desafioIndex] == resp)
         {
             //Debug.Log("acertou o resultado");
             resp = "";
             pegarDesafio();
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Nave>().Recaregar();
+            // GameObject.FindGameObjectWithTag("Player").GetComponent<Nave>().Recaregar();
         }
         else
         {
             resp = "";
             pegarDesafio();
+            return false;
         }
+        return true;
     }
 }
