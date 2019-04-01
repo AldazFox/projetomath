@@ -9,7 +9,10 @@ public class Nave : MonoBehaviour
     public Vector3 posicao, localScale;
     bool direcaoDireita = true;
     public GameObject plasma;
+    public GameObject canhao;
     int municao;
+    [SerializeField]
+    int vidaPontos = 5;
 
 
 
@@ -25,12 +28,12 @@ public class Nave : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             moverDireita();
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             moverEsquerda();
         }
@@ -92,7 +95,7 @@ public class Nave : MonoBehaviour
         respostaCerta = GameObject.FindGameObjectWithTag("Desafio").GetComponent<Desafio>().compararResposta();
         if (respostaCerta)
         {
-            GameObject plasmaGO = Instantiate(plasma, transform.position, transform.rotation);
+            GameObject plasmaGO = Instantiate(plasma, canhao.transform.position, canhao.transform.rotation);
         }
     }
     public void Recaregar()
@@ -104,5 +107,15 @@ public class Nave : MonoBehaviour
         }
         else
             return;
+    }
+
+    public void PederVida()
+    {
+        vidaPontos--;
+    }
+
+    public void GanharVida()
+    {
+        vidaPontos++;
     }
 }

@@ -13,11 +13,18 @@ public class NaveInvasora : MonoBehaviour
     public float velocidade;
     public float velFuga;
     public Vector3 posicao;
+    public GameObject canhao;
+    GameObject naveAlvo;
+    public LineRenderer raio;
+    bool alvoAtingido = false;
 
     // Use this for initialization
     void Start()
     {
         posicao = transform.position;
+        raio.enabled = false;
+        raio.useWorldSpace = true;
+        naveAlvo = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -49,7 +56,25 @@ public class NaveInvasora : MonoBehaviour
         //spriteMove = -0.1f;
     }
 
-
+    void dispararlaser()
+    {
+        Vector3 direcao =  naveAlvo.transform.position - canhao.transform.position;
+        RaycastHit2D hitInfo =  Physics2D.Raycast(canhao.transform.position, direcao);
+        //Debug.DrawLine(canhao.transform.position, hitInfo.transform.position,Color.cyan,0.01f);
+        Debug.Log(hitInfo.transform.name);
+        if (hitInfo)
+        {
+            raio.enabled = true;
+            raio.SetPosition(0, canhao.transform.position);
+            raio.SetPosition(1, hitInfo.transform.position);
+            Debug.Log(hitInfo.transform.name);
+            if(alvoAtingido==false)
+            {
+                hitInfo.transform.GetComponent<Nave>().PederVida();
+                alvoAtingido = true;
+            }
+        }
+    }
     public void PosAlvo(Vector3 p)
     {
         posAlvo = p;
@@ -89,6 +114,7 @@ public class NaveInvasora : MonoBehaviour
     }
     void MoverFugir()
     {
+        dispararlaser();
         posicao += transform.up * Time.deltaTime * velFuga;
         transform.position = posicao;
     }

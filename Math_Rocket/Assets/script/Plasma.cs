@@ -31,7 +31,14 @@ public class Plasma : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        autoDestuir();
+       Debug.Log(col.gameObject.tag);
+        Debug.Log(col.gameObject.tag == "NaveInimiga");
+        if (col.gameObject.tag == "NaveInimiga")
+        {
+            Debug.Log("entrou");
+            autoDestuir();
+        }
+
     }
 
     void mover()
